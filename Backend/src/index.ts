@@ -12,7 +12,9 @@ app.use(cors({
     credentials: true
 }));
 app.use(cookieParser());
-app.use(morgan("dev"))
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
 
 const server = http.createServer(app);
 server.listen(8080, ()=>{

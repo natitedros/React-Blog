@@ -24,6 +24,7 @@ export const blog_index = async (req: express.Request, res: express.Response) =>
 
 export const blog_create = async (req: express.Request, res: express.Response) =>{ 
     const { title, body, author:snippet } = req.body;
+    
     const blog = new Blog({title, body, snippet})
     blog.save()
         .then((result:blogTemplate)=>{
