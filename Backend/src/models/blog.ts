@@ -8,12 +8,14 @@ const blogSchema = new Schema({
     },
     snippet:{
         type: String,
-        required: true
     },
     body: {
         type: String,
         required: true
-    }
+    },
+    author:{
+        type: String,
+    },
 }, {timestamps: true})
 
 export const Blog = mongoose.model('Blog', blogSchema)
