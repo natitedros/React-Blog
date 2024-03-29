@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 interface CreateProps {}
 
@@ -7,9 +7,16 @@ const Create: React.FunctionComponent<CreateProps> = () => {
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("Nati");
   const history = useNavigate();
-  const handleSubmit = () => {
-    console.log("hi");
-    history("/");
+  const newBlog = { title, body, author };
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    fetch("http://localhost:8080/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBlog),
+    })
+      .then(() => history("/"))
+      .catch((err) => console.log(err));
   };
   return (
     <div className="create">

@@ -8,7 +8,6 @@ interface BlogListProps {
 const BlogList: React.FunctionComponent<BlogListProps> = (props) => {
   const blogs = props.blogs;
   const title = props.title;
-  console.log(blogs);
   return (
     <div className="blog-list">
       <h1>{title}</h1>
